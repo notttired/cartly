@@ -1,4 +1,4 @@
-package Scrapers.Tnt.SearchedPage.ItemClasses;
+package com.example.Scrapers.Tnt.SearchedPage.ItemClasses;
 
 public abstract class Item {
     private String itemName;

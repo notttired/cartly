@@ -1,8 +1,8 @@
-package Scrapers.Tnt.SearchedPage.ItemExtractors;
+package com.example.Scrapers.Tnt.SearchedPage.ItemExtractors;
 import org.openqa.selenium.WebElement;
 
-import Scrapers.Tnt.SearchedPage.ItemClasses.ItemNormal;
-import Scrapers.Tnt.SearchedPage.ItemExtractors.PriceExtractors.PriceExtractorNormal;
+import com.example.Scrapers.Tnt.SearchedPage.ItemClasses.ItemNormal;
+import com.example.Scrapers.Tnt.SearchedPage.ItemExtractors.PriceExtractors.PriceExtractorNormal;
 
 public class ItemExtractorNormal extends AItemExtractor {
 

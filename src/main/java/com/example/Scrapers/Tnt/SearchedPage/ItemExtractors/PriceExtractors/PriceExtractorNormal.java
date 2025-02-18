@@ -1,4 +1,4 @@
-package Scrapers.Tnt.SearchedPage.ItemExtractors.PriceExtractors;
+package com.example.Scrapers.Tnt.SearchedPage.ItemExtractors.PriceExtractors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
