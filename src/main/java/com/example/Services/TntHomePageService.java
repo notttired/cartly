@@ -44,14 +44,15 @@ public class TntHomePageService {
     }
 
     public ArrayList<Item> scrape(String postalCode, String itemName) {
-        System.out.println("closing");
+        System.out.println("Closing popup");
         this.closePopup(postalCode); // may not always be necessary
-        System.out.println("inputting");
+        System.out.println("Inputting Location");
         this.inputLocation(postalCode);
-        System.out.println("closing2");
+        System.out.println("Closing popup");
         this.closePopup(postalCode);
-        System.out.println("searching");
+        System.out.println("Searching for items");
         this.search(itemName);
+        System.out.println("Capturing items");
         return this.captureItems();
     }
 }

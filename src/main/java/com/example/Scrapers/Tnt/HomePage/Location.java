@@ -36,7 +36,7 @@ public class Location {
 
     public Location setLocation(String address) {
         System.out.println("2");
-        WebElement inputBar = wait.until(ExpectedConditions.elementToBeClickable(inputBarBy));
+        WebElement inputBar = wait.until(ExpectedConditions.presenceOfElementLocated(inputBarBy));
         inputBar.sendKeys(address);
         return this;
     }

@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import com.example.Scrapers.Tnt.SearchedPage.ItemClasses.Item;
 import com.example.Services.MainService;
 
 
@@ -24,15 +26,10 @@ public class Main {
     }
 
 
-    @GetMapping("/")
-    public void scrapeLocationTest() {
-        mainService.scrapeTnt("L5V", "meat");
-
+    @GetMapping("/tnt/scrape")
+    public ArrayList<Item> scrapeLocationTest() {
+        ArrayList<Item> items = mainService.scrapeTnt("L6V", "chicken");
+        System.out.println("Items captured: " + items.size());
+        return items;
     }
-
-    // @PostMapping("/tnt/scrape")
-    // public void scrapeLocation(@RequestBody String postalCode, String itemName) {
-    //     mainService.scrapeTnt(postalCode, itemName);
-    //     System.out.println("Scraping");
-    // }
 }

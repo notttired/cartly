@@ -42,7 +42,6 @@ public class SearchContent {
                 }
             }
         }
-        System.out.println("Items captured: " + items.size());
         return items;
     }
 }

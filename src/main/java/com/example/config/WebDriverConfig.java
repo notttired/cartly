@@ -32,7 +32,11 @@ public class WebDriverConfig {
         options.addArguments("--proxy-bypass-list=*");
         options.addArguments("--start-maximized");
         options.addArguments("--remote-debugging-port=9230");
-        options.addArguments("--incognito"); // Start Chrome in incognito mode
+        options.addArguments("--incognito");
+        options.addArguments("--disable-background-timer-throttling");
+        options.addArguments("--disable-backgrounding-occluded-windows");
+        options.addArguments("--headless");
+        
         System.setProperty("webdriver.chrome.driver","/Users/max/Desktop/chromedriver/chromedriver");
         driver = new ChromeDriver(options);
         return driver;
