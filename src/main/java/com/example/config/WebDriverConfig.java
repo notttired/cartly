@@ -37,7 +37,9 @@ public class WebDriverConfig {
         options.addArguments("--disable-backgrounding-occluded-windows");
         options.addArguments("--headless");
         
-        System.setProperty("webdriver.chrome.driver","/Users/max/Desktop/chromedriver/chromedriver");
+         String driverAddress = System.getenv("CHROME_DRIVER");
+        //String driverAddress = "/Users/max/Desktop/chromedriver/chromedriver";
+        System.setProperty("webdriver.chrome.driver", driverAddress);
         driver = new ChromeDriver(options);
         return driver;
     }

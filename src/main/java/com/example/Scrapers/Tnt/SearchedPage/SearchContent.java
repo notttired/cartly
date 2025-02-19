@@ -32,7 +32,7 @@ public class SearchContent {
 
     public ArrayList<Item> captureItems() {
         ArrayList<Item> items = new ArrayList<>();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(itemRoot));
         for (WebElement item : driver.findElements(itemRoot)) {
             for (AItemExtractor extractor : extractors) {

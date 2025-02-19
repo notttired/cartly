@@ -2,28 +2,27 @@ package com.example.Services;
 
 import java.util.ArrayList;
 
-import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Scrapers.Tnt.HomePage.Location;
-import com.example.Scrapers.Tnt.HomePage.SearchBar;
 import com.example.Scrapers.Tnt.SearchedPage.ItemClasses.Item;
 import com.example.Scrapers.Tnt.SearchedPage.SearchContent;
 import com.example.Scrapers.Tnt.HomePage.Popup;
+import com.example.Scrapers.Tnt.HomePage.DirectSearch;
 
 @Service
 public class TntHomePageService {
     private final Location location;
-    private final SearchBar searchBar;
+    private final DirectSearch directSearch;
     private final SearchContent searchContent;
     private final Popup popup;
     
     @Autowired
-    public TntHomePageService(Location location, SearchBar searchBar, SearchContent searchContent, Popup popup) {
+    public TntHomePageService(Location location, DirectSearch directSearch, SearchContent searchContent, Popup popup) {
         this.popup = popup;
         this.location = location;
-        this.searchBar = searchBar;
+        this.directSearch = directSearch;
         this.searchContent = searchContent;
     }
 
@@ -36,7 +35,7 @@ public class TntHomePageService {
     }
 
     public void search(String itemName) {
-        this.searchBar.openSearchBar().search(itemName);
+        this.directSearch.search(itemName);
     }
 
     public ArrayList<Item> captureItems() {
@@ -48,10 +47,10 @@ public class TntHomePageService {
         this.closePopup(postalCode); // may not always be necessary
         System.out.println("Inputting Location");
         this.inputLocation(postalCode);
-        System.out.println("Closing popup");
-        this.closePopup(postalCode);
         System.out.println("Searching for items");
         this.search(itemName);
+        System.out.println("Closing popup");
+        this.closePopup(postalCode);
         System.out.println("Capturing items");
         return this.captureItems();
     }

@@ -17,7 +17,7 @@ public class Location {
     @Autowired
     public Location(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         // may add check that we're on the right page
     }
 

@@ -3,8 +3,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.mycompany.app</groupId>
-  <artifactId>my-app</artifactId>
+  <groupId>com.mycompany</groupId>
+  <artifactId>cartly</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <parent>
@@ -13,13 +13,14 @@
         <version>3.2.2</version>
   </parent>
 
-  <name>my-app</name>
+  <name>cartly</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.localhost8080.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.release>21</maven.compiler.release>
+    <start-class>com.example.Main</start-class>
   </properties>
 
   <dependencyManagement> 
@@ -44,6 +45,10 @@
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
     </dependency>
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -87,9 +92,21 @@
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-          <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <configuration>
+              <mainClass>com.example.Main</mainClass>
+              <layout>JAR</layout>
+          </configuration>
+
+          <executions>
+              <execution>
+                  <goals>
+                      <goal>repackage</goal>
+                  </goals>
+              </execution>
+          </executions>
         </plugin>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>

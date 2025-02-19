@@ -3,6 +3,7 @@ com/example/Scrapers/Tnt/HomePage/Location.class
 com/example/config/WebDriverConfig.class
 com/example/Scrapers/Tnt/SearchedPage/ItemExtractors/AItemExtractor.class
 com/example/Scrapers/Tnt/SearchedPage/ItemExtractors/PriceExtractors/PriceExtractorSale.class
+com/example/Scrapers/Tnt/HomePage/Popup.class
 com/example/Services/TntHomePageService.class
 com/example/Scrapers/Tnt/SearchedPage/ItemClasses/ItemSale.class
 com/example/Services/TntService.class
