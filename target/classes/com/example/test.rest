@@ -1,0 +1,5 @@
+### Request 1
+GET http://localhost:8080/
+
+// CHECK THAT ALL ELEMENTS ARE SELECTED, THAT THE SELECTORS WORK
+// Go through the website multiple times to check for popups

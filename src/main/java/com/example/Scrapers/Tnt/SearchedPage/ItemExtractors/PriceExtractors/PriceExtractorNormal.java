@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 
 public class PriceExtractorNormal extends APriceExtractor {
 
-    private final By priceNormalContainerBy = By.xpath("//*[starts-with(@class, 'item-price')]");
+    private final By priceNormalContainerBy = By.xpath("//div[starts-with(@class, 'item-price')]");
 
     @Override
     public boolean canExtractPrice(WebElement itemElement) {

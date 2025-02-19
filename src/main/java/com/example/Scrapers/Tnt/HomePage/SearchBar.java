@@ -13,8 +13,9 @@ import com.example.Scrapers.Tnt.SearchedPage.SearchContent;
 @Component
 public class SearchBar {
     private final WebDriver driver;
-    private final By searchBarUnclickedBy = By.xpath("//*[starts-with(@class, 'searchBar-swiper')]");
-    private final By searchBarText = By.xpath("//*[starts-with(@class, 'searchBar-realSearch')]");
+    private final By searchBarUnclickedBy = By.xpath("//*[contains(@class, 'swiper-slide')]/div[1]");
+    // use contains over starts with
+    private final By searchBarText = By.xpath("//*[starts-with(@class, 'textInput-input')]");
 
     @Autowired
     public SearchBar(WebDriver driver) {
@@ -24,13 +25,19 @@ public class SearchBar {
 
     public SearchBar openSearchBar() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(searchBarUnclickedBy));
-        driver.findElement(searchBarUnclickedBy).click();
+        System.out.println("opening Searchbar");
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchBarUnclickedBy));
+        try {
+            driver.findElement(searchBarUnclickedBy).click();
+        } catch (Exception err) {
+
+        }
         return this;
     }
 
     public SearchContent search(String search) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        System.out.println("Inputting search");
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchBarText));
         driver.findElement(searchBarText).sendKeys(search);
         driver.findElement(searchBarText).submit();

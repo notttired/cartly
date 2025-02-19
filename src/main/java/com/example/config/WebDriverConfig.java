@@ -9,11 +9,32 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class WebDriverConfig {
 
+    private WebDriver driver;
+
     @Bean(name = "driver")
     public WebDriver driver() {
         ChromeOptions options = new ChromeOptions();
+        // Set User-Agent to mimic a real browser
+        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
+        
+        // Disable automation flags
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        options.setExperimentalOption("useAutomationExtension", false);
+        
+        // Add other necessary options
         options.addArguments("--remote-debugging-port=9230");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--proxy-server='direct://'");
+        options.addArguments("--proxy-bypass-list=*");
+        options.addArguments("--start-maximized");
+        options.addArguments("--remote-debugging-port=9230");
+        options.addArguments("--incognito"); // Start Chrome in incognito mode
         System.setProperty("webdriver.chrome.driver","/Users/max/Desktop/chromedriver/chromedriver");
-        return new ChromeDriver(options);
+        driver = new ChromeDriver(options);
+        return driver;
     }
 }

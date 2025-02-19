@@ -26,8 +26,8 @@ public class Main {
 
     @GetMapping("/")
     public void scrapeLocationTest() {
-        mainService.scrapeTnt("ABC", "meat");
-        System.out.println("Scraping");
+        mainService.scrapeTnt("L5V", "meat");
+
     }
 
     // @PostMapping("/tnt/scrape")

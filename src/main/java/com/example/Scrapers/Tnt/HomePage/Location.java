@@ -7,40 +7,43 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.openqa.selenium.WebElement;
 
 @Component
 public class Location {
     private final WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
 
     @Autowired
     public Location(WebDriver driver) {
         this.driver = driver;
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         // may add check that we're on the right page
     }
 
     private final By inputDialogBy = By.id("deliverTo");
     private final By inputBarBy = By.name("postcode");
-    private final By inputBarConfirmBy = By.id(".deliverCss-bottomButton-eoK");
+    private final By inputBarConfirmBy = By.xpath("//*[starts-with(@class, 'deliverCss-bottomButton')]");
 
     public Location openLocation() {
-        System.out.println("Waiting");
+        System.out.println("1");
         wait.until(ExpectedConditions.elementToBeClickable(inputDialogBy));
-        System.out.println("finished");
-        driver.findElement(inputDialogBy).click();
+        try {
+            driver.findElement(inputDialogBy).click();
+        } catch (Exception e) {}
         return this;
     }
 
     public Location setLocation(String address) {
-        wait.until(ExpectedConditions.elementToBeClickable(inputBarBy));
-        System.out.println("Setting location to: " + address);
-        driver.findElement(inputBarBy).sendKeys(address);
+        System.out.println("2");
+        WebElement inputBar = wait.until(ExpectedConditions.elementToBeClickable(inputBarBy));
+        inputBar.sendKeys(address);
         return this;
     }
 
     public void confirmLocation() {
-        wait.until(ExpectedConditions.elementToBeClickable(inputBarConfirmBy));
-        driver.findElement(inputBarConfirmBy).click();
+        System.out.println("3");
+        WebElement confirmButton = wait.until(ExpectedConditions.elementToBeClickable(inputBarConfirmBy));
+        confirmButton.click();
     }
 }

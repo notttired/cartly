@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public abstract class APriceExtractor {
-    private final By wholePriceBy = By.xpath("./*[2]"); // may have issues
-    private final By decimalPriceBy = By.xpath("./*[4]");
+    private final By wholePriceBy = By.xpath("./span[2]"); // may have issues
+    private final By decimalPriceBy = By.xpath("./span[4]");
 
     protected abstract boolean canExtractPrice(WebElement itemElement);
 

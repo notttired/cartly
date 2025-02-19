@@ -4,8 +4,8 @@ import org.openqa.selenium.WebElement;
 
 public class PriceExtractorSale extends APriceExtractor {
 
-    private final By priceCurrentContainerBy = By.xpath("//*[starts-with(@class, 'item-hasPrice')]");
-    private final By priceWasContainerBy = By.xpath("//*[starts-with(@class, 'item-wasPrice')]");
+    private final By priceCurrentContainerBy = By.xpath("//div[starts-with(@class, 'item-hasPrice')]");
+    private final By priceWasContainerBy = By.xpath("//div[starts-with(@class, 'item-wasPrice')]");
     
     @Override
     public boolean canExtractPrice(WebElement itemElement) {
