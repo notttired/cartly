@@ -56,14 +56,14 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-      - name: Deploy to Cloud Run
-        run: |
-          gcloud run deploy my-app \
-            --image ${{ steps.meta.outputs.tags }} \
-            --platform managed \
-            --region us-central1 \
-            --allow-unauthenticated
+      # - name: Authenticate with Google Cloud
+      #   uses: google-github-actions/auth@v1
+      #   with:
+      #     credentials_json: ${{ secrets.GCP_SA_KEY }}
+      # - name: Deploy to Cloud Run
+      #   run: |
+      #     gcloud run deploy my-app \
+      #       --image ${{ steps.meta.outputs.tags }} \
+      #       --platform managed \
+      #       --region us-central1 \
+      #       --allow-unauthenticated
